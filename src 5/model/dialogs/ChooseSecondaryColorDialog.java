@@ -1,5 +1,7 @@
 package model.dialogs;
 
+import java.awt.Color;
+
 import model.ShapeColor;
 import model.interfaces.IApplicationState;
 import view.interfaces.IDialogChoice;

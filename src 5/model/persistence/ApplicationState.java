@@ -9,6 +9,7 @@ import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
 import view.interfaces.IUiModule;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 public class ApplicationState implements IApplicationState, Serializable {
