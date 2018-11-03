@@ -5,7 +5,11 @@ import controller.DrawShapeHandler;
 import controller.IJPaintController;
 import controller.JPaintController;
 import controller.RedoCommand;
+import controller.SelectShapeCommand;
+import controller.SelectShapeHandler;
 import controller.UndoCommand;
+import model.Point;
+import model.SelectedShapeList;
 import model.ShapeList;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
@@ -25,11 +29,14 @@ public class Main {
         controller.setup();
 
         DrawShapeHandler drawShapeHandler = new DrawShapeHandler(paintCanvas);
+        SelectShapeHandler selectShapeHandler = new SelectShapeHandler(paintCanvas);
         ShapeList shapeList = new ShapeList(drawShapeHandler);
-        CreateShapeCommand createShapeCommand = new CreateShapeCommand(appState, shapeList);
+        SelectedShapeList selectedShapeList = new SelectedShapeList(selectShapeHandler);
+		CreateShapeCommand createShapeCommand = new CreateShapeCommand(appState, shapeList);
+		SelectShapeCommand selectShapeCommand = new SelectShapeCommand(appState, shapeList, selectedShapeList);
         UndoCommand undoCommand = new UndoCommand();
         RedoCommand redoCommand = new RedoCommand();
-        MyMouseListener mouseListener = new MyMouseListener(appState, createShapeCommand);
+        MyMouseListener mouseListener = new MyMouseListener(appState, createShapeCommand, selectShapeCommand);
         paintCanvas.addMouseListener(mouseListener);
         
         

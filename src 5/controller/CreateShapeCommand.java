@@ -14,7 +14,7 @@ import view.gui.PaintCanvas;
 public class CreateShapeCommand implements ICommand, IUndoable {
 
 	private IApplicationState applicationState;
-	private IShapeList shapeList;
+	private ShapeList shapeList;
 	private IShape shape;
 	PaintCanvas paintCanvas;
 	Graphics2D graphics;
@@ -31,7 +31,9 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 	
 	@Override
 	public void run(){
+		//createShape(startPoint, endPoint);
 		shapeList.addShape(shape);
+		System.out.println(shapeList.toString());
 		System.out.println("in createshapecommand");
 		CommandHistory.add(this);
 		System.out.println("added to commandhistory");

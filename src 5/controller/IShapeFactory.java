@@ -31,4 +31,9 @@ public class IShapeFactory {
 		
 		return shape;
 	}
+
+	public static Object selectShape(Point startPoint, Point endPoint, IApplicationState applicationState) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
